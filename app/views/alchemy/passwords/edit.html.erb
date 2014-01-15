@@ -1,17 +1,17 @@
-<div id="login_box">
-  <div id="alchemy_greeting">
-    <%= image_tag("alchemy/alchemy-logo.svg", style: "width: 240px; height: 70px") %>
-  </div>
-  <div class="login_signup_box">
+<div id="login_container">
+  <div id="login_box">
+    <div id="alchemy_greeting">
+      <%= image_tag("alchemy/alchemy-logo.svg", style: "width: 240px; height: 70px") %>
+    </div>
   <% if @user.errors.blank? %>
     <%= render_message do %>
       <h1><%= _t 'Password reset' %></h1>
       <p><%= _t 'Please enter a new password' %></p>
     <% end %>
   <% else %>
-    <div id="errors" style="display: block">
+    <%= render_message :error do %>
       <%= devise_error_messages! %>
-    </div>
+    <% end %>
   <% end %>
     <%= alchemy_form_for resource, as: resource_name, url: update_password_path, method: 'patch' do |f| %>
       <%= f.hidden_field :reset_password_token %>
