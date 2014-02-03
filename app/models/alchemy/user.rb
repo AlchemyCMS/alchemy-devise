@@ -4,9 +4,19 @@ require 'acts-as-taggable-on'
 module Alchemy
   class User < ActiveRecord::Base
 
-    devise :database_authenticatable,
-      :trackable, :validatable,
-      :timeoutable, :recoverable
+    DEVISE_MODULES = [
+      :database_authenticatable,
+      :trackable,
+      :validatable,
+      :timeoutable,
+      :recoverable
+    ]
+    # If the app uses an old encryption it uses the devise-encryptable gem
+    # therefore we have to load the devise module
+    if (::Devise::Models::Encryptable rescue false)
+      DEVISE_MODULES.push(:encryptable)
+    end
+    devise *DEVISE_MODULES
 
     acts_as_taggable
     acts_as_tagger
@@ -23,6 +33,9 @@ module Alchemy
       :send_credentials,
       :tag_list
     )
+
+    acts_as_taggable
+    acts_as_tagger
 
     attr_accessor :send_credentials
 
