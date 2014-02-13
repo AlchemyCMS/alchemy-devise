@@ -3,7 +3,14 @@ require 'acts-as-taggable-on'
 
 module Alchemy
   class User < ActiveRecord::Base
-    PERMITTED_ATTRIBUTES = [
+
+    devise :database_authenticatable,
+      :trackable, :validatable,
+      :timeoutable, :recoverable
+
+    acts_as_taggable
+
+    attr_accessible(
       :firstname,
       :lastname,
       :login,
@@ -14,13 +21,7 @@ module Alchemy
       :password_confirmation,
       :send_credentials,
       :tag_list
-    ]
-
-    devise :database_authenticatable,
-      :trackable, :validatable,
-      :timeoutable, :recoverable
-
-    acts_as_taggable
+    )
 
     attr_accessor :send_credentials
 
