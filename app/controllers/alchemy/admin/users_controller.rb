@@ -31,7 +31,7 @@ module Alchemy
       end
 
       def create
-        @user = User.create(user_params)
+        @user = User.create(params[:user])
         render_errors_or_redirect(
           @user,
           admin_users_path,
@@ -42,9 +42,9 @@ module Alchemy
       def update
         # User is fetched via before filter
         if params[:user][:password].present?
-          @user.update_attributes(user_params)
+          @user.update_attributes(params[:user])
         else
-          @user.update_without_password(user_params)
+          @user.update_without_password(params[:user])
         end
         render_errors_or_redirect(
           @user,

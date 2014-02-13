@@ -15,7 +15,7 @@ module Alchemy
     end
 
     def create
-      @user = User.new(user_params)
+      @user = User.new(params[:user])
       @user.alchemy_roles = %w(admin)
       if @user.save
         flash[:notice] = _t('Successfully signup admin user')
