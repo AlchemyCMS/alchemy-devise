@@ -4,11 +4,8 @@ module Alchemy
 
       before_filter :set_roles_and_genders, except: [:index, :destroy]
 
-      load_and_authorize_resource class: Alchemy::User,
-        only: [:edit, :update, :destroy]
-
-      authorize_resource class: Alchemy::User,
-        only: [:index, :new, :create]
+      filter_access_to [:edit, :update, :destroy], :attribute_check => true, :load_method => :load_user, :model => Alchemy::User
+      filter_access_to [:index, :new, :create], :attribute_check => false
 
       handles_sortable_columns do |c|
         c.default_sort_value = :login
@@ -66,6 +63,10 @@ module Alchemy
       end
 
     private
+
+      def load_user
+        @user = User.find(params[:id])
+      end
 
       def set_roles_and_genders
         @user_roles = User::ROLES.map { |role| [User.human_rolename(role), role] }
