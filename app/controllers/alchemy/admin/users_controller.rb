@@ -72,18 +72,6 @@ module Alchemy
         @user_genders = User.genders_for_select
       end
 
-      def user_params
-        params.require(:user).permit(*secure_attributes)
-      end
-
-      def secure_attributes
-        if can?(:update_role, Alchemy::User)
-          User::PERMITTED_ATTRIBUTES + [{alchemy_roles: []}]
-        else
-          User::PERMITTED_ATTRIBUTES
-        end
-      end
-
     end
   end
 end

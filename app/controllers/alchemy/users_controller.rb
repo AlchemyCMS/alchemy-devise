@@ -42,13 +42,5 @@ module Alchemy
       end
     end
 
-    def user_params
-      params.require(:user).permit(*secure_attributes)
-    end
-
-    def secure_attributes
-      User::PERMITTED_ATTRIBUTES
-    end
-
   end
 end
