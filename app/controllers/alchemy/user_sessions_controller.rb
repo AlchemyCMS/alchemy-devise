@@ -1,9 +1,9 @@
 class Alchemy::UserSessionsController < Devise::SessionsController
   helper 'Alchemy::Admin::Base', 'Alchemy::Pages'
 
-  before_action(except: 'destroy') { enforce_ssl if ssl_required? && !request.ssl? }
-  before_action :set_translation
-  before_action :check_user_count, :only => :new
+  before_filter(except: 'destroy') { enforce_ssl if ssl_required? && !request.ssl? }
+  before_filter :set_translation
+  before_filter :check_user_count, :only => :new
 
   layout 'alchemy/login'
 

@@ -1,8 +1,8 @@
 class Alchemy::PasswordsController < Devise::PasswordsController
   helper 'Alchemy::Admin::Base', 'Alchemy::Pages'
 
-  before_action { enforce_ssl if ssl_required? && !request.ssl? }
-  before_action :set_translation
+  before_filter { enforce_ssl if ssl_required? && !request.ssl? }
+  before_filter :set_translation
 
   layout 'alchemy/login'
 

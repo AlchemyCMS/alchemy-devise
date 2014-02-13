@@ -1,5 +1,5 @@
 Alchemy::BaseController.class_eval do
-  before_action :store_user_request_time
+  before_filter :store_user_request_time
 
   private
 
