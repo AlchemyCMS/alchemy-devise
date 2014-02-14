@@ -8,9 +8,9 @@
       hotkey: 'alt-n',
       overlay_options: {
         title: _t(:create_user),
-        size: "430x580"
+        size: "420x580"
       },
-      if_permitted_to: [:create, Alchemy::User]
+      if_permitted_to: [:new, :alchemy_admin_users]
     }
   ]
 ) %>
@@ -45,7 +45,7 @@
     <%= render partial: 'alchemy/admin/users/user', collection: @users %>
   </table>
 
-  <%= paginate @users, theme: 'alchemy' %>
+  <%= paginate @users %>
 
 <% elsif params[:query] %>
 

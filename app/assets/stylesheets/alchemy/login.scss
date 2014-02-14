@@ -1,8 +1,10 @@
 div#alchemy_greeting {
-  width: 258px;
-  margin: -4em auto 0 auto;
+  width: 370px;
+  margin-right: auto;
   margin-left: auto;
-  padding: 0px 2*$default-padding 2*$default-padding 158px;
+  padding: 2*$default-padding;
+  margin-top: -4em;
+  text-align: center;
 
   p {
     margin-top: 1em;
@@ -23,10 +25,11 @@ div.login_signup_box {
   background-color: $medium-gray;
   @extend .rounded-border;
   margin: 2em auto;
+
+  input[type="text"], input.thin_border { width: 250px }
 }
 
 html.no-js {
-
   div.login_signup_box, div#alchemy_greeting h1 {
     display: none;
   }

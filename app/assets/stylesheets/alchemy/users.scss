@@ -1,8 +1,10 @@
-form {
+td#user_roles {
+  padding: 9px 0;
 
-  &.user_roles .checkbox {
-    display: inline-block;
-    width: 50%;
+  label {
+    @include inline-block;
+    white-space: nowrap;
+    min-width: 40%;
   }
 }
 
