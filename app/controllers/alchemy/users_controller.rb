@@ -1,5 +1,6 @@
 module Alchemy
   class UsersController < BaseController
+
     before_filter { enforce_ssl if ssl_required? && !request.ssl? }
     before_filter :set_translation
     before_filter :check_user_count
@@ -11,12 +12,11 @@ module Alchemy
 
     def new
       @signup = true
-      @user = User.new(send_credentials: true)
+      @user = User.new(:alchemy_roles => 'admin')
     end
 
     def create
       @user = User.new(params[:user])
-      @user.alchemy_roles = %w(admin)
       if @user.save
         flash[:notice] = _t('Successfully signup admin user')
         sign_in :user, @user

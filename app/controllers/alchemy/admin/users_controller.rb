@@ -2,18 +2,18 @@ module Alchemy
   module Admin
     class UsersController < ResourcesController
 
-      before_filter :set_roles_and_genders, except: [:index, :destroy]
-
       filter_access_to [:edit, :update, :destroy], :attribute_check => true, :load_method => :load_user, :model => Alchemy::User
       filter_access_to [:index, :new, :create], :attribute_check => false
+
+      before_filter :set_roles_and_genders, :except => [:index, :destroy]
 
       handles_sortable_columns do |c|
         c.default_sort_value = :login
       end
 
       def index
-        if params[:query].present?
-          @users = User.where([
+        if !params[:query].blank?
+          users = User.where([
            "login LIKE ? OR email LIKE ? OR firstname LIKE ? OR lastname LIKE ?",
            "%#{params[:query]}%",
            "%#{params[:query]}%",
@@ -21,13 +21,9 @@ module Alchemy
            "%#{params[:query]}%"
          ])
         else
-          @users = User.all
+          users = User.scoped
         end
-        @users = @users.page(params[:page] || 1).per(per_page_value_for_screen_size).order(sort_order)
-      end
-
-      def new
-        @user = User.new(send_credentials: true)
+        @users = users.page(params[:page] || 1).per(per_page_value_for_screen_size).order(sort_order)
       end
 
       def create
@@ -41,6 +37,7 @@ module Alchemy
 
       def update
         # User is fetched via before filter
+        params[:user].delete(:alchemy_roles) unless permitted_to?(:update_roles)
         if params[:user][:password].present?
           @user.update_attributes(params[:user])
         else
@@ -57,12 +54,18 @@ module Alchemy
         # User is fetched via before filter
         name = @user.name
         if @user.destroy
-          flash[:notice] = _t("User deleted", name: name)
+          flash[:notice] = _t("User deleted", :name => name)
         end
-        do_redirect_to admin_users_path
+        respond_to do |format|
+          format.html { redirect_to admin_users_path }
+          format.js do
+            @redirect_url = admin_users_path
+            render action: 'redirect'
+          end
+        end
       end
 
-    private
+      private
 
       def load_user
         @user = User.find(params[:id])

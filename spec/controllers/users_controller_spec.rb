@@ -51,7 +51,7 @@ module Alchemy
       context "with valid params" do
         it "should sign in the user" do
           post :create, {user: attributes_for(:admin_user)}
-          controller.send(:user_signed_in?).should be_true
+          controller.send(:alchemy_user_signed_in?).should be_true
         end
       end
 
