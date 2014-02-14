@@ -39,7 +39,7 @@
       <th>
         <%= sortable_column(Alchemy::User.human_attribute_name('last_sign_in_at'), column: :last_sign_in_at) %>
       </th>
-      <th class="role"><%= Alchemy::User.human_attribute_name('roles') %></th>
+      <th class="role"><%= Alchemy::User.human_attribute_name('alchemy_roles') %></th>
       <th class="tools"></th>
     </tr>
     <%= render partial: 'alchemy/admin/users/user', collection: @users %>

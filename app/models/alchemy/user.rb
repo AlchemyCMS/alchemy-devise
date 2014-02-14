@@ -22,6 +22,7 @@ module Alchemy
     acts_as_tagger
 
     attr_accessible(
+      :alchemy_roles,
       :firstname,
       :lastname,
       :login,
@@ -33,9 +34,6 @@ module Alchemy
       :send_credentials,
       :tag_list
     )
-
-    acts_as_taggable
-    acts_as_tagger
 
     attr_accessor :send_credentials
 
