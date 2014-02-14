@@ -273,23 +273,23 @@ ActiveRecord::Schema.define(:version => 20131225232042) do
     t.string   "email"
     t.string   "gender"
     t.string   "language"
-    t.string   "encrypted_password",     :limit => 128, :default => "",       :null => false
-    t.string   "password_salt",          :limit => 128, :default => "",       :null => false
-    t.integer  "sign_in_count",                         :default => 0,        :null => false
-    t.integer  "failed_attempts",                       :default => 0,        :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",           :null => false
+    t.string   "password_salt",          :limit => 128, :default => "",           :null => false
+    t.integer  "sign_in_count",                         :default => 0,            :null => false
+    t.integer  "failed_attempts",                       :default => 0,            :null => false
     t.datetime "last_request_at"
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                                  :null => false
-    t.datetime "updated_at",                                                  :null => false
+    t.datetime "created_at",                                                      :null => false
+    t.datetime "updated_at",                                                      :null => false
     t.integer  "creator_id"
     t.integer  "updater_id"
     t.text     "cached_tag_list"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
-    t.string   "alchemy_roles",                         :default => "member"
+    t.string   "alchemy_roles",                         :default => "registered"
   end
 
   add_index "alchemy_users", ["alchemy_roles"], :name => "index_alchemy_users_on_alchemy_roles"

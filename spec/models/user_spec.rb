@@ -5,9 +5,9 @@ module Alchemy
     let(:user) { build_stubbed(:user) }
     let(:page) { build_stubbed(:page) }
 
-    it "should have at least member role" do
+    it "should have at least registered role" do
       user.alchemy_roles.should_not be_blank
-      user.alchemy_roles.should include('member')
+      user.alchemy_roles.should include('registered')
     end
 
     context ".after_save" do
@@ -30,11 +30,11 @@ module Alchemy
           end
         end
 
-        context "of member user" do
-          before { user.alchemy_roles = %w(member) }
+        context "of registered user" do
+          before { user.alchemy_roles = %w(registered) }
 
           it "delivers the welcome mail." do
-            Notifications.should_receive(:member_created).and_return(OpenStruct.new(deliver: true))
+            Notifications.should_receive(:registered_user_created).and_return(OpenStruct.new(deliver: true))
             user.save!
           end
         end
@@ -63,34 +63,34 @@ module Alchemy
     describe ".human_rolename" do
       it "return a translated role name" do
         ::I18n.locale = :de
-        User.human_rolename('member').should == "Mitglied"
+        User.human_rolename('registered').should == "Registriert"
       end
     end
 
     describe "#human_roles_string" do
       it "should return a humanized roles string." do
         ::I18n.locale = :de
-        user.alchemy_roles = ['member', 'admin']
-        user.human_roles_string.should == "Mitglied und Administrator"
+        user.alchemy_roles = ['registered', 'admin']
+        user.human_roles_string.should == "Registriert und Administrator"
       end
     end
 
     describe '#role_symbols' do
       it "should return an array of user role symbols" do
-        user.role_symbols.should == [:member]
+        user.role_symbols.should == [:registered]
       end
     end
 
     describe '#has_role?' do
       context "with given role" do
         it "should return true." do
-          user.has_role?('member').should be_true
+          user.has_role?('registered').should be_true
         end
       end
 
       context "with role given as symbol" do
         it "should return true." do
-          user.has_role?(:member).should be_true
+          user.has_role?(:registered).should be_true
         end
       end
 
@@ -111,7 +111,7 @@ module Alchemy
       end
 
       context "when user has multiple roles" do
-        before { user.alchemy_roles = ["admin", "member"] }
+        before { user.alchemy_roles = ["admin", "registered"] }
 
         it 'should return the first role' do
           user.role.should == "admin"
@@ -121,7 +121,7 @@ module Alchemy
 
     describe '#alchemy_roles' do
       it "should return an array of user roles" do
-        user.alchemy_roles.should == ["member"]
+        user.alchemy_roles.should == ["registered"]
       end
     end
 
@@ -133,13 +133,13 @@ module Alchemy
       end
 
       it "should accept a string of user roles" do
-        user.alchemy_roles = "admin member"
-        user.alchemy_roles.should == ["admin", "member"]
+        user.alchemy_roles = "admin registered"
+        user.alchemy_roles.should == ["admin", "registered"]
       end
 
       it "should store the user roles as space seperated string" do
-        user.alchemy_roles = ["admin", "member"]
-        user.read_attribute(:alchemy_roles).should == "admin member"
+        user.alchemy_roles = ["admin", "registered"]
+        user.read_attribute(:alchemy_roles).should == "admin registered"
       end
 
     end
@@ -147,12 +147,12 @@ module Alchemy
     describe "#add_role" do
       it "should add the given role to roles array" do
         user.add_role "admin"
-        user.alchemy_roles.should == ["member", "admin"]
+        user.alchemy_roles.should == ["registered", "admin"]
       end
 
       it "should not add the given role twice" do
-        user.add_role "member"
-        user.alchemy_roles.should == ["member"]
+        user.add_role "registered"
+        user.alchemy_roles.should == ["registered"]
       end
     end
 

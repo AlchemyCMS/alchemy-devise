@@ -3,9 +3,9 @@ require 'spec_helper'
 module Alchemy
   describe Notifications do
 
-    context "when a member user was created" do
-      let(:user) { mock_model('User', alchemy_roles: %w(member), email: 'jon@doe.com', name: 'John Doe', login: 'jon.doe') }
-      let(:mail) { Notifications.member_created(user) }
+    context "when a registered user was created" do
+      let(:user) { mock_model('User', alchemy_roles: %w(registered), email: 'jon@doe.com', name: 'John Doe', login: 'jon.doe') }
+      let(:mail) { Notifications.registered_user_created(user) }
 
       it "delivers a mail to user" do
         mail.to.should == [user.email]
@@ -44,7 +44,7 @@ module Alchemy
     end
 
     describe '#reset_password_instructions' do
-      let(:user) { mock_model('User', alchemy_roles: %w(member), email: 'jon@doe.com', name: 'John Doe', login: 'jon.doe', fullname: 'John Doe') }
+      let(:user) { mock_model('User', alchemy_roles: %w(registered), email: 'jon@doe.com', name: 'John Doe', login: 'jon.doe', fullname: 'John Doe') }
       let(:mail) { Notifications.reset_password_instructions(user) }
 
       before { user.stub(:reset_password_token).and_return('123') }
