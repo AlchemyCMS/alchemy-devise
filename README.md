@@ -1,8 +1,8 @@
-## Devise based authentication for Alchemy 3.0
+## Devise based authentication for Alchemy 2.9
 
-[![Build Status](https://secure.travis-ci.org/magiclabs/alchemy_devise.png?branch=master)](http://travis-ci.org/magiclabs/alchemy_devise) [![Coverage Status](https://coveralls.io/repos/magiclabs/alchemy-devise/badge.png)](https://coveralls.io/r/magiclabs/alchemy-devise) [![Code Climate](https://codeclimate.com/github/magiclabs/alchemy-devise.png)](https://codeclimate.com/github/magiclabs/alchemy-devise)
+[![Build Status](https://secure.travis-ci.org/magiclabs/alchemy_devise.png?branch=1.1-stable)](http://travis-ci.org/magiclabs/alchemy_devise) [![Coverage Status](https://coveralls.io/repos/magiclabs/alchemy-devise/badge.png)](https://coveralls.io/r/magiclabs/alchemy-devise) [![Code Climate](https://codeclimate.com/github/magiclabs/alchemy-devise.png)](https://codeclimate.com/github/magiclabs/alchemy-devise)
 
-Alchemy 3.0 has dropped the authentication from its core. So now it is possibly to bring your own authentication and use it to authorize users in Alchemy.
+Alchemy 2.9 has dropped the authentication from its core. So now it is possibly to bring your own authentication and use it to authorize users in Alchemy.
 
 In order to bring the authentication from Alchemy back into your app (For instance, because you don't have your own user authorization), you can use this gem.
 
@@ -12,7 +12,7 @@ Just put the gem into your projects `Gemfile`.
 
 ~~~
 # Gemfile
-gem 'alchemy-devise'
+gem 'alchemy-devise', '~> 1.1.0'
 ~~~
 
 and run `bundle install`.
