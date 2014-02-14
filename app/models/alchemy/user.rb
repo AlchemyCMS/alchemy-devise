@@ -159,7 +159,7 @@ module Alchemy
       if has_role?('author') || has_role?('editor') || has_role?('admin')
         Notifications.alchemy_user_created(self).deliver
       else
-        Notifications.member_created(self).deliver
+        Notifications.registered_user_created(self).deliver
       end
     end
 

@@ -3,7 +3,7 @@ module Alchemy
 
     default(from: Config.get(:mailer)['mail_from'])
 
-    def member_created(user)
+    def registered_user_created(user)
       @user = user
       @url = login_url
       mail(
