@@ -8,10 +8,6 @@ module Alchemy
 
     layout 'alchemy/login'
 
-    def new
-      build_resource(email: params[:email])
-    end
-
     private
 
     # Override for Devise method
