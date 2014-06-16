@@ -12,7 +12,7 @@ Just put the gem into your projects `Gemfile`.
 
 ~~~
 # Gemfile
-gem 'alchemy-devise', '~> 1.1.0.beta'
+gem 'alchemy-devise', '~> 1.1.0'
 ~~~
 
 and run `bundle install`.
