@@ -13,7 +13,10 @@ ru:
     models:
       alchemy/user:
         one: Пользователь
-        other: Пользователь
+        few: "Пользователей"
+        many: "Пользователи"
+        other: "Пользователи"
+        zero: "Пользователей"
 
     attributes:
       alchemy/user:
@@ -30,7 +33,7 @@ ru:
         alchemy_roles: "Роли пользователя"
         send_credentials: "Отправить email с данными для доступа"
         roles: "Роли"
-        tag_list: Метки
+        tag_list: "Метки"
 
     errors:
       models:
