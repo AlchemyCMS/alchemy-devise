@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gemspec
 
-gem 'alchemy_cms', github: 'AlchemyCMS/alchemy_cms', branch: 'master'
+gem 'alchemy_cms', github: 'AlchemyCMS/alchemy_cms', branch: '3.3-stable'
 
 unless ENV['CI']
   gem 'pry'
