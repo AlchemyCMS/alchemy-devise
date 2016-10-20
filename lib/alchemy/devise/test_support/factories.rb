@@ -6,6 +6,7 @@ FactoryGirl.define do
     lastname 'Doe'
     password 's3cr3t'
     password_confirmation 's3cr3t'
+    password_changed_at { Time.current }
 
     factory :alchemy_admin_user do
       alchemy_roles 'admin'

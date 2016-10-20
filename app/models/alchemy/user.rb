@@ -40,6 +40,8 @@ module Alchemy
     validates_uniqueness_of :login
     validates_presence_of :alchemy_roles
 
+    after_update :store_password_changed_time, if: :encrypted_password_changed?
+
     # Unlock all locked pages before destroy.
     before_destroy :unlock_pages!
 
@@ -182,6 +184,10 @@ module Alchemy
 
     def logged_in_timeout
       self.class.logged_in_timeout
+    end
+
+    def store_password_changed_time
+      update_column(:password_changed_at, Time.current)
     end
   end
 end

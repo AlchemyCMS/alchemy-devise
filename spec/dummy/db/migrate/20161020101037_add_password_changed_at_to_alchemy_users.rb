@@ -1,0 +1,1 @@
+../../../../db/migrate/20161020101037_add_password_changed_at_to_alchemy_users.rb

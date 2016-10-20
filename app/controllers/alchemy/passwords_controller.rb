@@ -3,6 +3,7 @@ module Alchemy
     include Alchemy::Admin::Locale
 
     before_action { enforce_ssl if ssl_required? && !request.ssl? }
+    skip_before_action :require_no_authentication, only: :edit
 
     helper 'Alchemy::Admin::Base'
 

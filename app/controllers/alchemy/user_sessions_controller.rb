@@ -20,6 +20,9 @@ module Alchemy
       authenticate_user!
 
       if user_signed_in?
+        if reset_password_requested?
+          request_password_reset && return
+        end
         store_screen_size
         if session[:redirect_path].blank?
           redirect_path = admin_dashboard_path
@@ -60,6 +63,20 @@ module Alchemy
       else
         request.referer
       end
+    end
+
+    def request_password_reset
+      token = current_alchemy_user.send(:set_reset_password_token)
+      redirect_to edit_password_path(reset_password_token: token),
+        notice: Alchemy.t(:reset_password_after_first_login)
+    end
+
+    def reset_password_requested?
+      first_login? && current_alchemy_user.password_changed_at.nil?
+    end
+
+    def first_login?
+      current_alchemy_user.sign_in_count == 1
     end
   end
 end
