@@ -23,11 +23,10 @@ describe "Password Routing" do
 
   it "routes to edit password" do
     expect({
-      get: "/admin/passwords/123/edit/12345"
+      get: "/admin/passwords/edit/12345"
     }).to route_to(
       controller: "alchemy/passwords",
       action: "edit",
-      id: "123",
       reset_password_token: "12345"
     )
   end

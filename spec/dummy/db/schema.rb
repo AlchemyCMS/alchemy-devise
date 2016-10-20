@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160627081901) do
+ActiveRecord::Schema.define(version: 20161020101037) do
 
   create_table "alchemy_attachments", force: :cascade do |t|
     t.string   "name"
@@ -299,6 +299,7 @@ ActiveRecord::Schema.define(version: 20160627081901) do
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.string   "alchemy_roles",                      default: "member"
+    t.datetime "password_changed_at"
   end
 
   add_index "alchemy_users", ["alchemy_roles"], name: "index_alchemy_users_on_alchemy_roles"

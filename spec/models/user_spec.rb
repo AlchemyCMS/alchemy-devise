@@ -303,5 +303,15 @@ module Alchemy
         expect(user.last_request_at).not_to eq(last_request_at)
       end
     end
+
+    describe "when password has changed" do
+      let(:user) { create(:alchemy_admin_user) }
+
+      it 'stores changed password time' do
+        expect {
+          user.reset_password('n3wP4$$w0rd', 'n3wP4$$w0rd')
+        }.to change { user.password_changed_at }
+      end
+    end
   end
 end
