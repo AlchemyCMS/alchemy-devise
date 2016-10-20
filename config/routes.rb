@@ -20,7 +20,7 @@ Alchemy::Engine.routes.draw do
 
       get '/passwords' => 'passwords#new',
         :as => :new_password
-      get '/passwords/:id/edit/:reset_password_token' => 'passwords#edit',
+      get '/passwords/edit/:reset_password_token' => 'passwords#edit',
         :as => :edit_password
       post '/passwords' => 'passwords#create',
         :as => :reset_password
