@@ -2,7 +2,6 @@ source "https://rubygems.org"
 
 gemspec
 
-gem 'alchemy_cms', github: 'AlchemyCMS/alchemy_cms', branch: 'master'
 gem 'sassc-rails'
 
 unless ENV['CI']
