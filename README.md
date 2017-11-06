@@ -1,10 +1,8 @@
-## Devise based authentication for Alchemy 4.0
+## Devise based authentication for AlchemyCMS 4.0
 
-[![Build Status](https://secure.travis-ci.org/AlchemyCMS/alchemy-devise.svg?branch=master)](http://travis-ci.org/AlchemyCMS/alchemy-devise)
+[![Build Status](https://secure.travis-ci.org/AlchemyCMS/alchemy-devise.svg?branch=4.0-stable)](http://travis-ci.org/AlchemyCMS/alchemy-devise)
 
-[![Gem Version](https://badge.fury.io/rb/alchemy-devise.svg)](http://badge.fury.io/rb/alchemy-devise) [![Test Coverage](https://codeclimate.com/github/AlchemyCMS/alchemy-devise/badges/coverage.svg)](https://codeclimate.com/github/AlchemyCMS/alchemy-devise/coverage) [![Code Climate](https://codeclimate.com/github/AlchemyCMS/alchemy-devise/badges/gpa.svg)](https://codeclimate.com/github/AlchemyCMS/alchemy-devise) [![security](https://hakiri.io/github/AlchemyCMS/alchemy-devise/master.svg)](https://hakiri.io/github/AlchemyCMS/alchemy-devise/master) [![Dependency Status](https://gemnasium.com/AlchemyCMS/alchemy-devise.svg)](https://gemnasium.com/AlchemyCMS/alchemy-devise)
-
-**CAUTION: This master branch is a development branch that can contain bugs. For productive environments you should use the [current Ruby gem version](https://rubygems.org/gems/alchemy-devise/versions/3.5.0), or the [latest stable branch (3.5-stable)](https://github.com/AlchemyCMS/alchemy-devise/tree/3.5-stable).**
+[![Gem Version](https://badge.fury.io/rb/alchemy-devise.svg)](http://badge.fury.io/rb/alchemy-devise) [![Test Coverage](https://codeclimate.com/github/AlchemyCMS/alchemy-devise/badges/coverage.svg)](https://codeclimate.com/github/AlchemyCMS/alchemy-devise/coverage) [![Code Climate](https://codeclimate.com/github/AlchemyCMS/alchemy-devise/badges/gpa.svg)](https://codeclimate.com/github/AlchemyCMS/alchemy-devise) [![security](https://hakiri.io/github/AlchemyCMS/alchemy-devise/4.0-stable.svg)](https://hakiri.io/github/AlchemyCMS/alchemy-devise/4.0-stable) [![Dependency Status](https://gemnasium.com/AlchemyCMS/alchemy-devise.svg)](https://gemnasium.com/AlchemyCMS/alchemy-devise)
 
 AlchemyCMS has no authentication in its core. So it is possibly to bring your own authentication and use it to authorize users in AlchemyCMS. If you don't have your own authentication, you can use this gem.
 
@@ -14,10 +12,8 @@ Just put the gem into your projects `Gemfile`.
 
 ```ruby
 # Gemfile
-gem 'alchemy-devise', github: 'AlchemyCMS/alchemy-devise', branch: 'master'
+gem 'alchemy-devise', github: 'AlchemyCMS/alchemy-devise', branch: '4.0-stable'
 ```
-
-**NOTE:** You normally want to use a stable branch, like `3.5-stable`.
 
 and run `bundle install`.
 
