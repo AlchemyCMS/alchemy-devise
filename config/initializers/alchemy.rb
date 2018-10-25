@@ -15,6 +15,6 @@ Alchemy::Modules.register_module({
 })
 
 Alchemy.user_class_name = 'Alchemy::User'
-Alchemy.signup_path     = '/admin/signup'
-Alchemy.login_path      = '/admin/login'
-Alchemy.logout_path     = '/admin/logout'
+Alchemy.signup_path = '/signup'
+Alchemy.login_path = '/login'
+Alchemy.logout_path = '/logout'

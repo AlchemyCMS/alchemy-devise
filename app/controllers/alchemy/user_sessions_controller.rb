@@ -2,11 +2,11 @@ module Alchemy
   class UserSessionsController < ::Devise::SessionsController
     include Alchemy::Admin::Locale
 
-    before_action except: 'destroy' do
+    before_action except: [:destroy] do
       enforce_ssl if ssl_required? && !request.ssl?
     end
 
-    before_action :check_user_count, :only => :new
+    before_action :check_user_count, only: [:new]
 
     helper 'Alchemy::Admin::Base'
 
@@ -38,7 +38,11 @@ module Alchemy
       current_alchemy_user.try(:unlock_pages!)
       cookies.clear
       session.clear
-      super
+      super do
+        flash[:notice] = nil
+        redirect_to alchemy.root_path
+        return false
+      end
     end
 
     private
