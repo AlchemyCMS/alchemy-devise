@@ -7,7 +7,7 @@ module Alchemy
         @user = user
 
         can :signup, Alchemy::User
-        can :create, Alchemy::User if Alchemy::User.count == 0
+        can :create, Alchemy::User if Alchemy.user_class.none?
 
         if member? || author? || editor?
           can [:show, :update], Alchemy.user_class, id: user.id
