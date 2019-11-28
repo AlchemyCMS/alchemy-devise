@@ -1,10 +1,14 @@
 module Alchemy
   class PasswordsController < ::Devise::PasswordsController
+    include Alchemy::ControllerActions
+    include Alchemy::SSLProtection
+    include Alchemy::Modules
     include Alchemy::Admin::Locale
 
     before_action { enforce_ssl if ssl_required? && !request.ssl? }
 
     helper 'Alchemy::Admin::Base'
+    helper 'Alchemy::Admin::Form'
 
     layout 'alchemy/admin'
 
