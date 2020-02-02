@@ -17,7 +17,6 @@ module Alchemy
       let!(:user1) do
         create :alchemy_user,
           email: 'find@me.com',
-          login: 'user1',
           firstname: 'Michael',
           lastname: 'Jackson'
       end
@@ -25,7 +24,6 @@ module Alchemy
       let!(:user2) do
         create :alchemy_user,
           email: 'find@me-not.com',
-          login: 'user2',
           firstname: 'Prince Rogers',
           lastname: 'Nelson'
       end
@@ -38,15 +36,6 @@ module Alchemy
         let(:query) { 'find@me.com' }
 
         it "returns all matching users" do
-          is_expected.to include(user1)
-          is_expected.to_not include(user2)
-        end
-      end
-
-      context 'by login' do
-        let(:query) { 'User1' }
-
-        it 'returns all matching users' do
           is_expected.to include(user1)
           is_expected.to_not include(user2)
         end
@@ -272,14 +261,6 @@ module Alchemy
     describe '#fullname' do
       it "should return the firstname and lastname" do
         expect(user.fullname).to eq("John Doe")
-      end
-
-      context "user without firstname and lastname" do
-        it "should return the login" do
-          user.firstname = nil
-          user.lastname = nil
-          expect(user.fullname).to eq(user.login)
-        end
       end
 
       context "with flipped option set to true" do

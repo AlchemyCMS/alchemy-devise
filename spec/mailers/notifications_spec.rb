@@ -8,8 +8,7 @@ module Alchemy
         mock_model 'User',
           alchemy_roles: %w(member),
           email: 'jon@doe.com',
-          name: 'John Doe',
-          login: 'jon.doe'
+          name: 'John Doe'
       end
       let(:mail) { Notifications.member_created(user) }
 
@@ -22,26 +21,18 @@ module Alchemy
         expect(mail.body.raw_source).to have_content user.name
       end
 
-      it "mail body includes users login" do
-        expect(mail.body.raw_source).to have_content user.login
-      end
-
       it "mail body includes password instructions" do
         expect(mail.body.raw_source).to match /#{Regexp.escape(admin_new_password_url(email: user.email, only_path: true))}/
       end
     end
 
     context "when an admin user was created" do
-      let(:user) { mock_model('User', alchemy_roles: %w(admin), email: 'jon@doe.com', name: 'John Doe', login: 'jon.doe') }
+      let(:user) { mock_model('User', alchemy_roles: %w(admin), email: 'jon@doe.com', name: 'John Doe') }
       let(:mail) { Notifications.alchemy_user_created(user) }
 
       it "delivers a mail to user" do
         expect(mail.to).to eq([user.email])
         expect(mail.subject).to eq('Your Alchemy Login')
-      end
-
-      it "mail body includes users login" do
-        expect(mail.body.raw_source).to match /#{user.login}/
       end
 
       it "mail body includes password instructions" do
@@ -55,7 +46,6 @@ module Alchemy
           alchemy_roles: %w(member),
           email: 'jon@doe.com',
           name: 'John Doe',
-          login: 'jon.doe',
           fullname: 'John Doe'
       end
 

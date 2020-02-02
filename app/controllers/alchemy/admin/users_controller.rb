@@ -14,7 +14,7 @@ module Alchemy
 
       def index
         @query = User.ransack(params[:q])
-        @query.sorts = 'login asc' if @query.sorts.empty?
+        @query.sorts = 'email asc' if @query.sorts.empty?
         @users = @query.result
           .page(params[:page] || 1)
           .per(items_per_page)

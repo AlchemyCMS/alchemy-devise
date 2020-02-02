@@ -6,7 +6,6 @@ module Alchemy
     PERMITTED_ATTRIBUTES = [
       :firstname,
       :lastname,
-      :login,
       :email,
       :language,
       :password,
@@ -23,7 +22,6 @@ module Alchemy
 
     has_many :folded_pages
 
-    validates_uniqueness_of :login
     validates_presence_of :alchemy_roles
 
     # Unlock all locked pages before destroy.
@@ -46,13 +44,12 @@ module Alchemy
 
       # Search users that match query
       #
-      # Attributes searched are: login, email, firstname, lastname
+      # Attributes searched are: email, firstname, lastname
       #
       def search(query)
         query = "%#{query.downcase}%"
 
-        where arel_table[:login].lower.matches(query)
-          .or arel_table[:email].lower.matches(query)
+        where arel_table[:email].lower.matches(query)
           .or arel_table[:firstname].lower.matches(query)
           .or arel_table[:lastname].lower.matches(query)
       end
@@ -109,19 +106,13 @@ module Alchemy
 
     # Returns the firstname and lastname as a string
     #
-    # If both are blank, returns the login
-    #
     # @option options :flipped (false)
     #   Flip the firstname and lastname
     #
     def fullname(options = {})
-      if lastname.blank? && firstname.blank?
-        login
-      else
-        options = {:flipped => false}.merge(options)
-        fullname = options[:flipped] ? "#{lastname}, #{firstname}" : "#{firstname} #{lastname}"
-        fullname.squeeze(" ").strip
-      end
+      options = {:flipped => false}.merge(options)
+      fullname = options[:flipped] ? "#{lastname}, #{firstname}" : "#{firstname} #{lastname}"
+      fullname.squeeze(" ").strip
     end
     alias_method :name, :fullname
     alias_method :alchemy_display_name, :fullname

@@ -4,7 +4,6 @@ class CreateAlchemyUsers < ActiveRecord::Migration[4.2]
     create_table "alchemy_users" do |t|
       t.string   "firstname"
       t.string   "lastname"
-      t.string   "login"
       t.string   "email"
       t.string   "language"
       t.string   "encrypted_password",     limit: 128, default: "",       null: false
@@ -26,7 +25,6 @@ class CreateAlchemyUsers < ActiveRecord::Migration[4.2]
     end
 
     add_index "alchemy_users", ["email"], unique: true
-    add_index "alchemy_users", ["login"], unique: true
     add_index "alchemy_users", ["reset_password_token"], unique: true
   end
 end

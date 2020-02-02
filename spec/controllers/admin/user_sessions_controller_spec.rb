@@ -35,7 +35,7 @@ describe Alchemy::Admin::UserSessionsController do
     describe '#create' do
       context 'with valid user' do
         let(:screen_size) {'1200x800'}
-        let(:user_params) { {login: user.login, password: 's3cr3t'} }
+        let(:user_params) { {email: user.email, password: 's3cr3t'} }
 
         before { user }
 
@@ -56,7 +56,7 @@ describe Alchemy::Admin::UserSessionsController do
 
         context 'without valid params' do
           it "renders login form" do
-            post :create, params: {user: {login: ''}}
+            post :create, params: {user: {email: ''}}
             is_expected.to render_template(:new)
           end
         end

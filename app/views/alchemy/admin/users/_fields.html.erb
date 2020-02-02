@@ -1,7 +1,6 @@
 <%= f.input :firstname %>
 <%= f.input :lastname %>
-<%= f.input :login, autofocus: true %>
-<%= f.input :email %>
+<%= f.input :email, autofocus: true %>
 <%= f.input :language,
   collection: translations_for_select,
   include_blank: false,
