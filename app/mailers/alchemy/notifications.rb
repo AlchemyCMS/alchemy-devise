@@ -1,5 +1,5 @@
 module Alchemy
-  class Notifications < ActionMailer::Base
+  class Notifications < ::Devise::Mailer
 
     default(from: Config.get(:mailer)['mail_from'])
 
@@ -21,12 +21,30 @@ module Alchemy
       )
     end
 
+    def member_reset_password_instructions(user, token, opts={})
+      @user = user
+      @token = token
+      mail(
+        to: user.email,
+        subject: Alchemy.t("Reset password instructions")
+      )
+    end
+
     def reset_password_instructions(user, token, opts={})
       @user = user
       @token = token
       mail(
         to: user.email,
         subject: Alchemy.t("Reset password instructions")
+      )
+    end
+
+    def confirmation_instructions(user, token, opts={})
+      @user = user
+      @token = token
+      mail(
+        to: user.email,
+        subject: Alchemy.t("Account confirmation instructions")
       )
     end
   end

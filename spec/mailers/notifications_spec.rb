@@ -78,5 +78,43 @@ module Alchemy
         expect(mail.body.raw_source).to match /#{Regexp.escape(admin_edit_password_url(user, reset_password_token: token, only_path: true))}/
       end
     end
+
+    context 'with user accounts and confirmations enabled' do
+      before do
+        allow(Alchemy::Devise).to receive(:enable_user_accounts?) { true }
+        allow(Alchemy::Devise).to receive(:confirmations_enabled?) { true }
+        Rails.application.reload_routes!
+      end
+
+      describe '#confirmation_instructions' do
+        let(:user) do
+          mock_model 'User',
+            alchemy_roles: %w(member),
+            email: 'jon@doe.com',
+            name: 'John Doe',
+            login: 'jon.doe',
+            fullname: 'John Doe'
+        end
+
+        let(:token) { '123456789' }
+
+        let(:mail) do
+          Notifications.confirmation_instructions(user, token)
+        end
+
+        it "delivers a mail to user" do
+          expect(mail.to).to eq([user.email])
+          expect(mail.subject).to eq('Account confirmation instructions')
+        end
+
+        it "mail body includes users name" do
+          expect(mail.body.raw_source).to match /#{user.fullname}/
+        end
+
+        it "mail body includes reset instructions" do
+          expect(mail.body.raw_source).to match /#{Regexp.escape(confirmation_url(user, confirmation_token: token, only_path: true))}/
+        end
+      end
+    end
   end
 end

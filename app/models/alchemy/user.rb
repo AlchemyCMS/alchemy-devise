@@ -157,6 +157,15 @@ module Alchemy
       end
     end
 
+    # Overwritten to send a different email to members
+    def send_reset_password_instructions_notification(token)
+      if has_role?('member')
+        send_devise_notification(:member_reset_password_instructions, token, {})
+      else
+        send_devise_notification(:reset_password_instructions, token, {})
+      end
+    end
+
     private
 
     def logged_in_timeout
