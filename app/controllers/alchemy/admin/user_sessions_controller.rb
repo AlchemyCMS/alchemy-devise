@@ -1,6 +1,11 @@
 module Alchemy
   module Admin
     class UserSessionsController < ::Devise::SessionsController
+      include Alchemy::ConfigurationMethods
+      include Alchemy::AbilityHelper
+      include Alchemy::ControllerActions
+      include Alchemy::Modules
+      include Alchemy::SSLProtection
       include Alchemy::Admin::Locale
 
       protect_from_forgery prepend: true
@@ -12,6 +17,7 @@ module Alchemy
       before_action :check_user_count, :only => :new
 
       helper 'Alchemy::Admin::Base'
+      helper 'Alchemy::Admin::Form'
 
       layout 'alchemy/admin'
 
