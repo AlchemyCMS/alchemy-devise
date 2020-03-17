@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Password reset feature." do
+describe "Admin password reset feature." do
   let(:user) { create(:alchemy_admin_user) }
 
   it "User can visit password reset form." do

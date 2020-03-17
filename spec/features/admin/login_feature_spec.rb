@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Login: " do
+describe "Admin Login: " do
   context "If user is present" do
     let!(:user) do
       Alchemy::User.create!(
