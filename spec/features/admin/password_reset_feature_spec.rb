@@ -20,7 +20,7 @@ describe "Admin password reset feature." do
   end
 
   it "User can change password." do
-    allow(Alchemy::User)
+    expect(Alchemy::User)
       .to receive(:reset_password_by_token)
       .and_return(user)
 
