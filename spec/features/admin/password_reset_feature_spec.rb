@@ -30,6 +30,8 @@ describe "Admin password reset feature." do
     fill_in :user_password_confirmation, with: 'secret123'
     click_button 'Change password'
 
+    expect(page.current_path).to eq(alchemy.admin_dashboard_path)
+
     expect(page)
       .to have_content('Your password has been changed successfully.')
   end
