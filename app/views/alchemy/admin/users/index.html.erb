@@ -1,22 +1,18 @@
-<%= toolbar(
-  buttons: [
-    {
-      icon: :plus,
-      label: Alchemy.t(:create_user),
-      url: alchemy.new_admin_user_path,
-      title: Alchemy.t(:create_user),
-      hotkey: 'alt+n',
-      dialog_options: {
-        title: Alchemy.t(:create_user),
-        size: "430x560"
-      },
-      if_permitted_to: [:create, Alchemy::User]
-    }
-  ]
+<%= toolbar_button(
+  icon: :plus,
+  label: Alchemy.t(:create_user),
+  url: alchemy.new_admin_user_path,
+  title: Alchemy.t(:create_user),
+  hotkey: 'alt+n',
+  dialog_options: {
+    title: Alchemy.t(:create_user),
+    size: "430x560"
+  },
+  if_permitted_to: [:create, Alchemy::User]
 ) %>
 
 <div id="archive_all" class="resources-table-wrapper">
-  <%= resources_header %>
+  <%= render 'alchemy/admin/resources/table_header' %>
 <% if @users.any? %>
 
   <table class="list" id="user_list">
