@@ -1,7 +1,9 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 describe "Session Routing" do
-  context 'if user accounts are enabled' do
+  context "if user accounts are enabled" do
     before(:all) do
       Alchemy::Devise.enable_user_accounts = true
       Rails.application.reload_routes!
@@ -9,33 +11,33 @@ describe "Session Routing" do
 
     it "routes to login" do
       expect({
-        get: "/account/login"
+        get: "/account/login",
       }).to route_to(
         controller: "alchemy/sessions",
-        action: "new"
+        action: "new",
       )
     end
 
     it "routes to create session" do
       expect({
-        post: "/account/login"
+        post: "/account/login",
       }).to route_to(
         controller: "alchemy/sessions",
-        action: "create"
+        action: "create",
       )
     end
 
     it "routes to logout" do
       expect({
-        delete: "/account/logout"
+        delete: "/account/logout",
       }).to route_to(
         controller: "alchemy/sessions",
-        action: "destroy"
+        action: "destroy",
       )
     end
   end
 
-  context 'if user accounts are disabled' do
+  context "if user accounts are disabled" do
     before(:all) do
       Alchemy::Devise.enable_user_accounts = false
       Rails.application.reload_routes!
@@ -43,28 +45,28 @@ describe "Session Routing" do
 
     it "does not route to login" do
       expect({
-        get: "/account/login"
+        get: "/account/login",
       }).to_not route_to(
         controller: "alchemy/sessions",
-        action: "new"
+        action: "new",
       )
     end
 
     it "does not route to create session" do
       expect({
-        post: "/account/login"
+        post: "/account/login",
       }).to_not route_to(
         controller: "alchemy/sessions",
-        action: "create"
+        action: "create",
       )
     end
 
     it "does not route to logout" do
       expect({
-        delete: "/account/logout"
+        delete: "/account/logout",
       }).to_not route_to(
         controller: "alchemy/sessions",
-        action: "destroy"
+        action: "destroy",
       )
     end
   end

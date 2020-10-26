@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Alchemy
   class PasswordsController < ::Devise::PasswordsController
-    helper 'Alchemy::Pages'
+    helper "Alchemy::Pages"
 
     private
 

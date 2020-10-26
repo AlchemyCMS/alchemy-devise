@@ -1,7 +1,9 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 describe "Password Routing" do
-  context 'if user accounts are enabled' do
+  context "if user accounts are enabled" do
     before(:all) do
       Alchemy::Devise.enable_user_accounts = true
       Rails.application.reload_routes!
@@ -9,42 +11,42 @@ describe "Password Routing" do
 
     it "routes to new password" do
       expect({
-        get: "/account/password/new"
+        get: "/account/password/new",
       }).to route_to(
         controller: "alchemy/passwords",
-        action: "new"
+        action: "new",
       )
     end
 
     it "routes to reset password" do
       expect({
-        post: "/account/password"
+        post: "/account/password",
       }).to route_to(
         controller: "alchemy/passwords",
-        action: "create"
+        action: "create",
       )
     end
 
     it "routes to edit password" do
       expect({
-        get: "/account/password/edit"
+        get: "/account/password/edit",
       }).to route_to(
         controller: "alchemy/passwords",
-        action: "edit"
+        action: "edit",
       )
     end
 
     it "routes to update password" do
       expect({
-        patch: "/account/password"
+        patch: "/account/password",
       }).to route_to(
         controller: "alchemy/passwords",
-        action: "update"
+        action: "update",
       )
     end
   end
 
-  context 'if user accounts are disabled' do
+  context "if user accounts are disabled" do
     before(:all) do
       Alchemy::Devise.enable_user_accounts = false
       Rails.application.reload_routes!
@@ -52,37 +54,37 @@ describe "Password Routing" do
 
     it "does not route to new password" do
       expect({
-        get: "/account/password/new"
+        get: "/account/password/new",
       }).to_not route_to(
         controller: "alchemy/passwords",
-        action: "new"
+        action: "new",
       )
     end
 
     it "does not route to reset password" do
       expect({
-        post: "/account/password"
+        post: "/account/password",
       }).to_not route_to(
         controller: "alchemy/passwords",
-        action: "create"
+        action: "create",
       )
     end
 
     it "does not route to edit password" do
       expect({
-        get: "/account/password/edit"
+        get: "/account/password/edit",
       }).to_not route_to(
         controller: "alchemy/passwords",
-        action: "edit"
+        action: "edit",
       )
     end
 
     it "does not route to update password" do
       expect({
-        patch: "/account/password"
+        patch: "/account/password",
       }).to_not route_to(
         controller: "alchemy/passwords",
-        action: "update"
+        action: "update",
       )
     end
   end

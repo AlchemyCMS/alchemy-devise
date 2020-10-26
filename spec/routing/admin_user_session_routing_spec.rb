@@ -1,32 +1,34 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 describe "Admin User Session Routing" do
   routes { Alchemy::Engine.routes }
 
   it "routes to login" do
     expect({
-      get: "/admin/login"
+      get: "/admin/login",
     }).to route_to(
       controller: "alchemy/admin/user_sessions",
-      action: "new"
+      action: "new",
     )
   end
 
   it "routes to create session" do
     expect({
-      post: "/admin/login"
+      post: "/admin/login",
     }).to route_to(
       controller: "alchemy/admin/user_sessions",
-      action: "create"
+      action: "create",
     )
   end
 
   it "routes to logout" do
     expect({
-      delete: "/admin/logout"
+      delete: "/admin/logout",
     }).to route_to(
       controller: "alchemy/admin/user_sessions",
-      action: "destroy"
+      action: "destroy",
     )
   end
 end
