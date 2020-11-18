@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency "alchemy_cms", [">= 4.1.0", "< 6"]
-  s.add_dependency "devise",      [">= 4.7.1", "< 5"]
+  s.add_dependency "devise",      ["4.7.3"]
 
   s.add_development_dependency "capybara"
   s.add_development_dependency "factory_bot_rails"
