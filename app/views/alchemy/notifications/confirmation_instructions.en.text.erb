@@ -1,0 +1,5 @@
+Welcome <%= @user.fullname %>!
+
+You can confirm your account email through the link below:
+
+<%= alchemy.confirmation_url(@user, confirmation_token: @token) %>

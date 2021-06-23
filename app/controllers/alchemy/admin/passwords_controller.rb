@@ -22,16 +22,8 @@ module Alchemy
         alchemy.admin_login_path
       end
 
-      def admin_edit_password_url(_resource, options = {})
-        alchemy.admin_edit_password_url(options)
-      end
-
       def after_resetting_password_path_for(resource)
-        if can? :index, :alchemy_admin_dashboard
-          alchemy.admin_dashboard_path
-        else
-          alchemy.root_path
-        end
+        alchemy.admin_dashboard_path
       end
     end
   end

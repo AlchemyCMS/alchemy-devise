@@ -1,0 +1,5 @@
+Willkommen <%= @user.fullname %>!
+
+Bitte bestätigen Sie Ihre E-Mail-Adresse durch klicken auf folgenden Link:
+
+<%= alchemy.confirmation_url(@user, confirmation_token: @token) %>

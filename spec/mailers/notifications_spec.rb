@@ -1,21 +1,22 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 module Alchemy
   describe Notifications do
-
     context "when a member user was created" do
       let(:user) do
-        mock_model 'User',
+        mock_model "User",
           alchemy_roles: %w(member),
-          email: 'jon@doe.com',
-          name: 'John Doe',
-          login: 'jon.doe'
+          email: "jon@doe.com",
+          name: "John Doe",
+          login: "jon.doe"
       end
       let(:mail) { Notifications.member_created(user) }
 
       it "delivers a mail to user" do
         expect(mail.to).to eq([user.email])
-        expect(mail.subject).to eq('Your user credentials')
+        expect(mail.subject).to eq("Your user credentials")
       end
 
       it "mail body includes users name" do
@@ -32,12 +33,12 @@ module Alchemy
     end
 
     context "when an admin user was created" do
-      let(:user) { mock_model('User', alchemy_roles: %w(admin), email: 'jon@doe.com', name: 'John Doe', login: 'jon.doe') }
+      let(:user) { mock_model("User", alchemy_roles: %w(admin), email: "jon@doe.com", name: "John Doe", login: "jon.doe") }
       let(:mail) { Notifications.alchemy_user_created(user) }
 
       it "delivers a mail to user" do
         expect(mail.to).to eq([user.email])
-        expect(mail.subject).to eq('Your Alchemy Login')
+        expect(mail.subject).to eq("Your Alchemy Login")
       end
 
       it "mail body includes users login" do
@@ -49,17 +50,17 @@ module Alchemy
       end
     end
 
-    describe '#reset_password_instructions' do
+    describe "#reset_password_instructions" do
       let(:user) do
-        mock_model 'User',
+        mock_model "User",
           alchemy_roles: %w(member),
-          email: 'jon@doe.com',
-          name: 'John Doe',
-          login: 'jon.doe',
-          fullname: 'John Doe'
+          email: "jon@doe.com",
+          name: "John Doe",
+          login: "jon.doe",
+          fullname: "John Doe"
       end
 
-      let(:token) { '123456789' }
+      let(:token) { "123456789" }
 
       let(:mail) do
         Notifications.reset_password_instructions(user, token)
@@ -67,7 +68,7 @@ module Alchemy
 
       it "delivers a mail to user" do
         expect(mail.to).to eq([user.email])
-        expect(mail.subject).to eq('Reset password instructions')
+        expect(mail.subject).to eq("Reset password instructions")
       end
 
       it "mail body includes users name" do
@@ -76,6 +77,44 @@ module Alchemy
 
       it "mail body includes reset instructions" do
         expect(mail.body.raw_source).to match /#{Regexp.escape(admin_edit_password_url(user, reset_password_token: token, only_path: true))}/
+      end
+    end
+
+    context "with user accounts and confirmations enabled" do
+      before do
+        allow(Alchemy::Devise).to receive(:enable_user_accounts?) { true }
+        allow(Alchemy::Devise).to receive(:confirmations_enabled?) { true }
+        Rails.application.reload_routes!
+      end
+
+      describe "#confirmation_instructions" do
+        let(:user) do
+          mock_model "User",
+            alchemy_roles: %w(member),
+            email: "jon@doe.com",
+            name: "John Doe",
+            login: "jon.doe",
+            fullname: "John Doe"
+        end
+
+        let(:token) { "123456789" }
+
+        let(:mail) do
+          Notifications.confirmation_instructions(user, token)
+        end
+
+        it "delivers a mail to user" do
+          expect(mail.to).to eq([user.email])
+          expect(mail.subject).to eq("Account confirmation instructions")
+        end
+
+        it "mail body includes users name" do
+          expect(mail.body.raw_source).to match /#{user.fullname}/
+        end
+
+        it "mail body includes reset instructions" do
+          expect(mail.body.raw_source).to match /#{Regexp.escape(confirmation_url(user, confirmation_token: token, only_path: true))}/
+        end
       end
     end
   end

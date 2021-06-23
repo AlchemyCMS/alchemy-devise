@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Password reset feature." do
+describe "Admin password reset feature." do
   let(:user) { create(:alchemy_admin_user) }
 
   it "User can visit password reset form." do
@@ -20,7 +20,7 @@ describe "Password reset feature." do
   end
 
   it "User can change password." do
-    allow(Alchemy::User)
+    expect(Alchemy::User)
       .to receive(:reset_password_by_token)
       .and_return(user)
 
@@ -29,6 +29,8 @@ describe "Password reset feature." do
     fill_in :user_password, with: 'secret123'
     fill_in :user_password_confirmation, with: 'secret123'
     click_button 'Change password'
+
+    expect(page.current_path).to eq(alchemy.admin_dashboard_path)
 
     expect(page)
       .to have_content('Your password has been changed successfully.')
