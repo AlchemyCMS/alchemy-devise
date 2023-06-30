@@ -7,7 +7,7 @@ if alchemy_branch == "main"
   gem "jsbundling-rails", "~> 1.1"
 end
 
-gem "rails", "~> 6.1.7"
+gem "rails", "~> 7.0.6"
 gem "listen", "~> 3.8"
 
 # Specify your gem's dependencies in alchemy-solidus.gemspec
