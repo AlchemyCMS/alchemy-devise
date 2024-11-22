@@ -18,7 +18,9 @@ module Alchemy
       end
 
       config.to_prepare do
-        require_relative "../../../app/controllers/alchemy/base_controller_extension"
+        Rails.autoloaders.main.on_load("Alchemy::BaseController") do
+          Alchemy::BaseControllerExtension
+        end
       end
     end
   end
