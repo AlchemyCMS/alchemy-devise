@@ -11,6 +11,10 @@ gem "puma", "~> 7.0"
 # Specify your gem's dependencies in alchemy-solidus.gemspec
 gemspec
 
+if rails_version == "8.1"
+  gem "awesome_nested_set", github: "caonUlisses/awesome_nested_set", branch: "main"
+end
+
 group :test do
   if ENV["DB"].nil? || ENV["DB"] == "sqlite"
     gem "sqlite3", "~> 2.5"

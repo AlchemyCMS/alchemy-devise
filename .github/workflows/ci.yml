@@ -14,6 +14,7 @@ jobs:
       matrix:
         alchemy_branch:
           - "8.0-stable"
+          - "rails-8.1"
           - "main"
         ruby:
           - "3.2"
@@ -22,10 +23,20 @@ jobs:
         rails:
           - "7.2"
           - "8.0"
+          - "8.1"
         database:
           - mysql
           - postgresql
           - sqlite
+        exclude:
+          - alchemy_branch: "8.0-stable"
+            rails: "8.1"
+          - alchemy_branch: "main"
+            rails: "8.1"
+          - alchemy_branch: "rails-8.1"
+            rails: "8.0"
+          - alchemy_branch: "rails-8.1"
+            rails: "7.2"
 
     env:
       DB: ${{ matrix.database }}
