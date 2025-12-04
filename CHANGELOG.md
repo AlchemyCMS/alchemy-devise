@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.4.2 (2025-12-04)
+
+- [7.4-stable] Merge pull request #238 from robinboening/fix_missing_clear_buttons [#240](https://github.com/AlchemyCMS/alchemy-devise/pull/240) ([alchemycms-bot](https://github.com/apps/alchemycms-bot))
+
 ## 7.4.1 (2025-02-12)
 
 - Fix module icon for Alchemy 7.4 [#224](https://github.com/AlchemyCMS/alchemy-devise/pull/224) ([tvdeyen](https://github.com/tvdeyen))
