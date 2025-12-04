@@ -1,5 +1,14 @@
 # Changelog
 
+## 8.0.1 (2025-12-04)
+
+- [8.0-stable] Merge pull request #237 from AlchemyCMS/devise-rememberable [#243](https://github.com/AlchemyCMS/alchemy-devise/pull/243) ([alchemycms-bot](https://github.com/apps/alchemycms-bot))
+- [8.0-stable] Merge pull request #236 from AlchemyCMS/alchemy-config [#242](https://github.com/AlchemyCMS/alchemy-devise/pull/242) ([alchemycms-bot](https://github.com/apps/alchemycms-bot))
+- [8.0-stable] Merge pull request #238 from robinboening/fix_missing_clear_buttons [#241](https://github.com/AlchemyCMS/alchemy-devise/pull/241) ([alchemycms-bot](https://github.com/apps/alchemycms-bot))
+- Enable rememberable module [#237](https://github.com/AlchemyCMS/alchemy-devise/pull/237) ([tvdeyen](https://github.com/tvdeyen))
+- Use Alchemy::Configuration for config [#236](https://github.com/AlchemyCMS/alchemy-devise/pull/236) ([tvdeyen](https://github.com/tvdeyen))
+- Set 8.0-stable branch to current `main` [#232](https://github.com/AlchemyCMS/alchemy-devise/pull/232) ([mamhoff](https://github.com/mamhoff))
+
 ## 8.0.0 (2025-11-28)
 
 - Enable rememberable module [#237](https://github.com/AlchemyCMS/alchemy-devise/pull/237) ([tvdeyen](https://github.com/tvdeyen))
