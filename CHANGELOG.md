@@ -1,5 +1,14 @@
 # Changelog
 
+## 8.0.2 (2026-03-25)
+
+## What's Changed
+* [8.0-stable] Merge pull request #256 from blish-guenzler/fix-double-pagination by @alchemycms-bot[bot] in https://github.com/AlchemyCMS/alchemy-devise/pull/257
+* [8.0-stable] Merge pull request #259 from blish-guenzler/fix-login-link-to-dialog by @alchemycms-bot[bot] in https://github.com/AlchemyCMS/alchemy-devise/pull/260
+
+
+**Full Changelog**: https://github.com/AlchemyCMS/alchemy-devise/compare/v8.0.1...v8.0.2
+
 ## 8.0.1 (2025-12-04)
 
 - [8.0-stable] Merge pull request #237 from AlchemyCMS/devise-rememberable [#243](https://github.com/AlchemyCMS/alchemy-devise/pull/243) ([alchemycms-bot](https://github.com/apps/alchemycms-bot))
