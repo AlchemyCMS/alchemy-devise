@@ -14,7 +14,6 @@ jobs:
       matrix:
         alchemy_branch:
           - "8.0-stable"
-          - "main"
         ruby:
           - "3.2"
           - "3.3"
