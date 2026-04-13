@@ -1,5 +1,13 @@
 # Changelog
 
+## 8.1.0 (2026-04-13)
+
+<!-- Release notes generated using configuration in .github/release.yml at v8.1.0 -->
+
+
+
+**Full Changelog**: https://github.com/AlchemyCMS/alchemy-devise/compare/v8.1.1...v8.1.0
+
 ## 8.1.0 (2026-02-02)
 
 <!-- Release notes generated using configuration in .github/release.yml at 8.1-stable -->
