@@ -1,5 +1,24 @@
 # Changelog
 
+## 8.4.0 (2026-09-01)
+
+<!-- Release notes generated using configuration in .github/release.yml at 8.4-stable -->
+
+## What's Changed
+### New Features
+* feat: New login and signup screens by @tvdeyen in https://github.com/AlchemyCMS/alchemy-devise/pull/291
+* feat(admin): Use primary action for add user button  by @tvdeyen in https://github.com/AlchemyCMS/alchemy-devise/pull/292
+* feat: Use `Alchemy::UserMethods` module by @tvdeyen in https://github.com/AlchemyCMS/alchemy-devise/pull/295
+### Dependencies
+* chore(deps-dev): update simplecov-cobertura requirement from ~> 3.0 to ~> 4.0 by @dependabot[bot] in https://github.com/AlchemyCMS/alchemy-devise/pull/286
+* chore(deps-dev): bump sass from 1.101.0 to 1.102.0 by @dependabot[bot] in https://github.com/AlchemyCMS/alchemy-devise/pull/293
+### Other Changes
+* chore: Update specs for Alchemy 8.4/main by @tvdeyen in https://github.com/AlchemyCMS/alchemy-devise/pull/290
+* fix: Wrap toolbar buttons in container by @tvdeyen in https://github.com/AlchemyCMS/alchemy-devise/pull/294
+
+
+**Full Changelog**: https://github.com/AlchemyCMS/alchemy-devise/compare/v8.3.0...v8.4.0
+
 ## 8.3.0 (2026-06-25)
 
 <!-- Release notes generated using configuration in .github/release.yml at main -->
