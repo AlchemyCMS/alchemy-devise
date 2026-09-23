@@ -1,5 +1,17 @@
 # Changelog
 
+## 8.4.1 (2026-09-23)
+
+<!-- Release notes generated using configuration in .github/release.yml at 8.4-stable -->
+
+## What's Changed
+### Other Changes
+* [8.4-stable] Merge pull request #306 from AlchemyCMS/fix-login-css-relative-color by @alchemycms-bot[bot] in https://github.com/AlchemyCMS/alchemy-devise/pull/307
+* [8.4-stable] Merge pull request #309 from AlchemyCMS/fix/apply-csp-to-devise-controllers by @alchemycms-bot[bot] in https://github.com/AlchemyCMS/alchemy-devise/pull/310
+
+
+**Full Changelog**: https://github.com/AlchemyCMS/alchemy-devise/compare/v8.4.0...v8.4.1
+
 ## 8.4.0 (2026-09-01)
 
 <!-- Release notes generated using configuration in .github/release.yml at 8.4-stable -->
