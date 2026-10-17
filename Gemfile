@@ -28,4 +28,4 @@ gem "standardrb", "~> 1.0", require: false
 
 gem "propshaft", "~> 1.1"
 
-gem "json", "< 3", require: false
+gem "json", "< 4", require: false
