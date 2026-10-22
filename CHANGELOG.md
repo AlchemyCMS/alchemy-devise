@@ -1,5 +1,19 @@
 # Changelog
 
+## 8.4.2 (2026-10-22)
+
+<!-- Release notes generated using configuration in .github/release.yml at 8.4-stable -->
+
+## What's Changed
+### New Features
+* [8.4-stable] Merge pull request #312 from AlchemyCMS/stepup-auth-role-assignment by @alchemycms-bot[bot] in https://github.com/AlchemyCMS/alchemy-devise/pull/313
+### Other Changes
+* [8.4-stable] Merge pull request #316 from AlchemyCMS/fix-ransack-6-user-search by @alchemycms-bot[bot] in https://github.com/AlchemyCMS/alchemy-devise/pull/317
+* [8.4-stable] Merge pull request #320 from AlchemyCMS/fix-csp-test by @alchemycms-bot[bot] in https://github.com/AlchemyCMS/alchemy-devise/pull/321
+
+
+**Full Changelog**: https://github.com/AlchemyCMS/alchemy-devise/compare/v8.4.1...v8.4.2
+
 ## 8.4.1 (2026-09-23)
 
 <!-- Release notes generated using configuration in .github/release.yml at 8.4-stable -->
