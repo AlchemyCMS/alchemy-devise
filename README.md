@@ -7,6 +7,13 @@
 
 AlchemyCMS has no authentication in its core. So it is possible to bring your own authentication and use it to authorize users in AlchemyCMS. If you don't have your own authentication, you can use this gem.
 
+> [!IMPORTANT]
+> Starting with Alchemy CMS 9.0, `alchemy-devise` lives in the [`devise/` directory of the Alchemy CMS repository](https://github.com/AlchemyCMS/alchemy_cms/tree/main/devise)
+> and is released together with `alchemy_cms` using the same version.
+> Please open issues and pull requests there.
+>
+> This repository only receives fixes for the 8.x versions on its stable branches.
+
 ## Install
 
 Just put the gem into your projects `Gemfile`.
